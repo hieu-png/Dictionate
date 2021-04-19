@@ -22,7 +22,7 @@
     <Label text="User Name:"
            GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
-    <TextField
+    <TextField fx:id="username"
             GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
     <Label text="Password:"
@@ -43,7 +43,7 @@
                 onAction="#handleLoginAsGuestAction"/>
     </HBox>
 
-    <Text fx:id="actiontarget"
+    <Text fx:id="textMessage"
           GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 
 </GridPane>

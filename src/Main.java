@@ -4,7 +4,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import Controller.SceneController;
+
 public class Main extends Application {
+
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -12,7 +17,7 @@ public class Main extends Application {
         Parent root =
                 FXMLLoader.load(getClass().getResource("/View/LoginScreen.fxml"));
         primaryStage.setTitle("E-Training");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, SceneController.APP_WIDTH, SceneController.APP_HEIGHT));
         primaryStage.show();
     }
 

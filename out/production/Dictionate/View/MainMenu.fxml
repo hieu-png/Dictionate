@@ -12,7 +12,35 @@
 <?import javafx.geometry.*?>
 
 <GridPane fx:controller="Controller.MainMenu"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="20" vgap="20">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
 
+    <VBox spacing="10" alignment="top_left"
+          GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <Button text="Dictionary"
+                minWidth="150"
+                minHeight="150"
+                onAction="#goToDictionary"/>
+    </VBox>
+    <VBox spacing="10" alignment="top_right"
+          GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <Button text="User"
+                minWidth="150"
+                minHeight="150"
+                onAction="#goToDictionary"/>
+    </VBox>
+    <VBox spacing="10" alignment="bottom_left"
+          GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Button text="Test"
+                minWidth="150"
+                minHeight="150"
+                onAction="#goToTest"/>
+    </VBox>
+    <VBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Button text="Setting"
+                minWidth="150"
+                minHeight="150"
+                onAction="#goToSettings"/>
+    </VBox>
 </GridPane>

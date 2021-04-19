@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<GridPane fx:controller="Controller.AccountCreation"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+
+    <Text text="Create a new account"
+          GridPane.columnIndex="0" GridPane.rowIndex="0"
+          GridPane.columnSpan="2"/>
+
+
+    <Label text="Full Name:"
+           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="fullName"
+               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Text fx:id="textMessageFullName"
+          GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
+    <Label text="User Name:"
+           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="username"
+               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <Text fx:id="textMessageUserName"
+          GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+    <Label text="email:"
+           GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="email"
+               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <Text fx:id="textMessageEmail"
+          GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+
+    <Label text="Password:"
+           GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <PasswordField fx:id="passwordField1"
+                   GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    <Text fx:id="textMessagePassword1"
+          GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+
+    <Label text="Retype Password:"
+           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <PasswordField fx:id="passwordField2"
+                   GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    <Text fx:id="textMessagePassword2"
+          GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+
+    <HBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="1" GridPane.rowIndex="7">
+        <Button text="Create"
+                onAction="#handleCreateButtonAction"/>
+    </HBox>
+    <HBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="0" GridPane.rowIndex="7">
+        <Button text="Check"
+                onAction="#handleCheckButtonAction"/>
+    </HBox>
+
+
+    <Text fx:id="textMessage"
+          GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+
+</GridPane>

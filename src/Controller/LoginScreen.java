@@ -29,7 +29,7 @@ public class LoginScreen extends SceneController{
         login("guest","1");
     }
     @FXML protected void handleCreateNewAccountAction(ActionEvent event)   {
-        switchTo("AccountCreation", textMessage.getScene());
+        switchTo("AccountCreation", textMessage.getScene(),false);
     }
     private Boolean login(String userName, String password)  {
 

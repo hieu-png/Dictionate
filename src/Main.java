@@ -9,7 +9,7 @@ import Controller.SceneController;
 public class Main extends Application {
 
 
-
+    //xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -17,7 +17,7 @@ public class Main extends Application {
         Parent root =
                 FXMLLoader.load(getClass().getResource("/View/LoginScreen.fxml"));
         primaryStage.setTitle("E-Training");
-        primaryStage.setScene(new Scene(root, SceneController.APP_WIDTH, SceneController.APP_HEIGHT));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 

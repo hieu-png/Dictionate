@@ -1,46 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import java.net.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane fx:controller="Controller.MainMenu"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="20" vgap="20">
-    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+<GridPane alignment="center" hgap="30" vgap="30" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="Controller.MainMenu">
+    <padding><Insets bottom="10" left="10" right="10" top="10" /></padding>
 
-    <VBox spacing="10" alignment="top_left"
-          GridPane.columnIndex="0" GridPane.rowIndex="0">
-        <Button text="Dictionary"
-                minWidth="150"
-                minHeight="150"
-                onAction="#goToDictionary"/>
+    <VBox alignment="top_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <Button minHeight="200" minWidth="200" onAction="#goToDictionary" text="Dictionary" />
     </VBox>
-    <VBox spacing="10" alignment="top_right"
-          GridPane.columnIndex="1" GridPane.rowIndex="0">
-        <Button text="User"
-                minWidth="150"
-                minHeight="150"
-                onAction="#goToDictionary"/>
+    <VBox alignment="top_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <Button minHeight="200" minWidth="200" onAction="#goToUserInfoView" text="User Info" />
     </VBox>
-    <VBox spacing="10" alignment="bottom_left"
-          GridPane.columnIndex="0" GridPane.rowIndex="1">
-        <Button text="Test"
-                minWidth="150"
-                minHeight="150"
-                onAction="#goToTest"/>
+    <VBox alignment="bottom_left" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Button fx:id="buttonTest" minHeight="200" minWidth="200" onAction="#goToTest" text="Test" />
     </VBox>
-    <VBox spacing="10" alignment="bottom_right"
-          GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <Button text="Setting"
-                minWidth="150"
-                minHeight="150"
-                onAction="#goToSettings"/>
+    <VBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Button minHeight="200" minWidth="200" onAction="#goToSettings" text="Setting" />
     </VBox>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

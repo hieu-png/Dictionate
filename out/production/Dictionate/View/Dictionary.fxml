@@ -9,21 +9,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Dictionary">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Dictionary">
    <children>
-      <SplitPane dividerPositions="0.29797979797979796" prefHeight="600.0" prefWidth="842.0">
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="600.0" prefWidth="800.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="270.0" style="-fx-background-color: #4284f5;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="270.0" style="-fx-background-color: #4284f5;">
                <children>
                   <ListView fx:id="wordList" layoutX="15.0" layoutY="69.0" prefHeight="508.0" prefWidth="208.0" />
                   <TextField fx:id="searchBarText" layoutX="67.0" layoutY="14.0" prefHeight="35.0" prefWidth="159.0" promptText="Word here" />
                   <Button fx:id="searchButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="41.0" style="-fx-background-color: #ffffff;" text="🔍" textFill="#4284f5" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="610.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="500.0">
                <children>
-                  <TextArea fx:id="curWordMeaning" editable="false" layoutX="24.0" layoutY="107.0" prefHeight="468.0" prefWidth="538.0" text="Meaning of word" />
-                  <Button fx:id="toMainMenu" layoutX="521.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleToMainMenu" style="-fx-background-color: #4284f5;" text="Back" textFill="WHITE" />
+                  <TextArea fx:id="curWordMeaning" editable="false" layoutX="24.0" layoutY="107.0" prefHeight="468.0" prefWidth="496.0" text="Meaning of word" />
+                  <Button fx:id="toMainMenu" layoutX="471.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleToMainMenu" style="-fx-background-color: #4284f5;" text="Back" textFill="WHITE" />
                   <Text fx:id="curWordDef" layoutX="24.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WordDef" wrappingWidth="173.13671875">
                      <font>
                         <Font size="32.0" />

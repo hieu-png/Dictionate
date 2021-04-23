@@ -1,10 +1,10 @@
 package Controller;
 
 import Model.DictionaryFunction;
-import Model.MySqlQueryFunction;
+import Model.DatabaseQueryFunction;
 
 public class Controller {
     DictionaryFunction df;
-    MySqlQueryFunction qf;
+    DatabaseQueryFunction qf;
 
 }

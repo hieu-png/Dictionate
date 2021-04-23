@@ -21,28 +21,12 @@ public class SceneController {
             Parent root = FXMLLoader.load(getClass().getResource("/View/"+stageName+".fxml"));
             Stage stage = (Stage) scene.getWindow();
 
-            stage.setScene(new Scene(root,APP_WIDTH,APP_HEIGHT));
+            stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void switchTo(String stageName,Scene scene,Boolean appSize){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/View/"+stageName+".fxml"));
-            Stage stage = (Stage) scene.getWindow();
-            if(appSize)
-                stage.setScene(new Scene(root,APP_WIDTH,APP_HEIGHT));
-            else
-                stage.setScene(new Scene(root));
-
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
 
 

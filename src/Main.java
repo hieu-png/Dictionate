@@ -18,6 +18,7 @@ public class Main extends Application {
                 FXMLLoader.load(getClass().getResource("/View/LoginScreen.fxml"));
         primaryStage.setTitle("E-Training");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

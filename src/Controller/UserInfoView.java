@@ -11,6 +11,6 @@ public class UserInfoView extends SceneController{
         switchTo("MainMenu", toMainMenu.getScene());
     }
     @FXML protected void handleBackToLogin(ActionEvent event)   {
-        switchTo("LoginScreen", logOutButton.getScene(),false);
+        switchTo("LoginScreen", logOutButton.getScene());
     }
 }

@@ -65,7 +65,7 @@ public class AccountCreation extends SceneController {
     }
     @FXML protected void handleToLoginScreen() {
 
-        switchTo("LoginScreen",textMessage.getScene(),false);
+        switchTo("LoginScreen",textMessage.getScene());
     }
     @FXML protected void handleCreateButtonAction() {
 

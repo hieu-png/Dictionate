@@ -72,8 +72,8 @@ public class DatabaseQueryDictionary {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            try{ if(rs !=null) rs.close();} catch (Exception e){};
-            try{ if(stmt !=null) stmt.close();} catch (Exception e){};
+            try{ if(rs !=null) rs.close();} catch (Exception e){}
+            try{ if(stmt !=null) stmt.close();} catch (Exception e){}
 
         }
     }

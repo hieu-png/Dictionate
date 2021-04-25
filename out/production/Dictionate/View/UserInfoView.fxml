@@ -48,7 +48,7 @@
                                     <Label text="User Name" textFill="WHITE" GridPane.rowIndex="1" />
                                     <TextField fx:id="usernameText" disable="true" promptText="username" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Full Name" textFill="WHITE" GridPane.rowIndex="2" />
-                                    <TextField fx:id="fullnameText" promptText="user" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="fullNameText" promptText="user" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <Label text="Email" textFill="WHITE" GridPane.rowIndex="3" />
                                     <TextField fx:id="emailText" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                     <Label text="Password" textFill="WHITE" GridPane.rowIndex="4" />

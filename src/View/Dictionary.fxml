@@ -22,13 +22,14 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="500.0">
                <children>
-                  <TextArea fx:id="curWordMeaning" editable="false" layoutX="24.0" layoutY="107.0" prefHeight="468.0" prefWidth="496.0" text="Meaning of word" />
+                  <TextArea fx:id="curWordMeaning" editable="false" layoutX="31.0" layoutY="107.0" prefHeight="468.0" prefWidth="496.0" text="Meaning of word" />
                   <Button fx:id="toMainMenu" layoutX="471.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleToMainMenu" style="-fx-background-color: #4284f5;" text="Back" textFill="WHITE" />
-                  <Text fx:id="curWordDef" layoutX="24.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WordDef" wrappingWidth="173.13671875">
+                  <Text fx:id="curWordDef" layoutX="24.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WordDef" wrappingWidth="402.13671875">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </Text>
+                  <Text fx:id="curWordPronounce" layoutX="24.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/AIE/" wrappingWidth="337.35546875" />
                </children>
             </AnchorPane>
         </items>

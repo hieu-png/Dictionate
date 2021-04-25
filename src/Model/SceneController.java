@@ -1,6 +1,5 @@
-package Controller;
+package Model;
 
-import Model.DatabaseQueryFunction;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,14 +8,18 @@ import javafx.stage.Stage;
 public class SceneController {
     public static final int APP_WIDTH=850;
     public static final int APP_HEIGHT=600;
-    DatabaseQueryFunction databaseQueryFunction;
 
-    public DatabaseQueryFunction getDatabaseQueryFunction() {
-        return databaseQueryFunction;
+    protected DatabaseQueryFunction databaseFunction;
+
+    public void setDatabaseFunction(DatabaseQueryFunction databaseFunction) {
+        this.databaseFunction = databaseFunction;
     }
 
-    public void setDatabaseQueryFunction(DatabaseQueryFunction databaseQueryFunction) {
-        this.databaseQueryFunction = databaseQueryFunction;
+    /**
+    initialize function, avoid fxml problematic one.
+     */
+    public void init() {
+
     }
 
     /**
@@ -24,14 +27,23 @@ public class SceneController {
      * @param stageName ten cua stage, scene... vd: Test, Settings
      * @param scene lay tu tat ca variable vd: passwordField.getScene()
      */
+
+
+
     public void switchTo(String stageName,Scene scene){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/"+stageName+".fxml"));
 
             Parent root = loader.load();
+
+            SceneController s = (SceneController) loader.getController();
+            s.setDatabaseFunction(databaseFunction);
+
             Stage stage = (Stage) scene.getWindow();
             stage.setScene(new Scene(root));
+            s.init();
             stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,8 +1,9 @@
 package Controller;
+import Model.SceneController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
 
 public class MainMenu extends SceneController {
 
@@ -10,6 +11,7 @@ public class MainMenu extends SceneController {
     @FXML protected Button buttonTest;
     @FXML protected void goToTest(ActionEvent event) {
         //switchTo("Test",buttonTest.getScene());
+
 
     }
     @FXML protected void goToSettings(ActionEvent event) {

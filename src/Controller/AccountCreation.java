@@ -18,7 +18,7 @@ public class AccountCreation extends SceneController {
     @FXML protected TextField username, fullName, email;
     @FXML protected DatePicker birthdayPicker;
     @FXML public Text textMessage,textMessageUserName,textMessageFullName,textMessageBirthday,textMessageEmail,textMessagePassword1,textMessagePassword2;
-
+    //Kiem tra xem co dap ung dieu kien tai khoan
     public boolean checkIfSatisfy() {
         Boolean success = true;
 
@@ -71,6 +71,7 @@ public class AccountCreation extends SceneController {
 
         return success;
     }
+    //check
     @FXML protected void handleCheckButtonAction() {
 
         checkIfSatisfy();
@@ -79,6 +80,7 @@ public class AccountCreation extends SceneController {
 
         switchTo("LoginScreen",textMessage.getScene());
     }
+    //create
     @FXML protected void handleCreateButtonAction() {
 
 
@@ -105,6 +107,7 @@ public class AccountCreation extends SceneController {
 
         }
     }
+    //kiem tra ten da ton tai chua
     public boolean checkUserEligibility(String username) {
         Boolean eligibility = true;
         ResultSet rs = null;
@@ -123,6 +126,7 @@ public class AccountCreation extends SceneController {
         }
         return eligibility;
     }
+    //tim nguoi dung
     public boolean findUser(String username) {
         ResultSet rs = null;
         PreparedStatement stmt = null;

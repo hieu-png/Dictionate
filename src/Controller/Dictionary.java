@@ -13,27 +13,80 @@ import javafx.scene.text.Text;
 
 public class Dictionary extends SceneController {
 
-    @FXML protected Button toMainMenu,searchButton;
-    @FXML public ListView wordList;
-    @FXML public TextField searchBarText;
-    @FXML public TextArea curWordMeaning;
-    @FXML public Text curWordDef,curWordPronounce;
+    @FXML
+    public ListView wordList;
+    @FXML
+    public TextField searchBarText;
+    @FXML
+    public TextArea curWordMeaning;
+    @FXML
+    public Text curWordDef, curWordPronounce;
+    @FXML
+    protected Button toMainMenu, searchButton;
     boolean loaded = false;
-    @FXML protected void handleToMainMenu(ActionEvent event)   {
 
-       switchTo("MainMenu", toMainMenu.getScene());
+    @FXML
+    protected void handleToMainMenu(ActionEvent event) {
+
+        switchTo("MainMenu", toMainMenu.getScene());
 
     }
-    protected void handleSelectItems()   {
+
+    @FXML
+    protected void handleSearchButton(ActionEvent event) {
+        selectWord(getWordNearest(searchBarText.getText()));
+        System.out.print("Input" + searchBarText.getText());
+
+    }
+    @FXML
+    protected void handleSearchText(ActionEvent event) {
+        selectWord(getWordNearest(searchBarText.getText()));
+        System.out.print("Input" + searchBarText.getText());
+    }
+    public void selectWord(int i) {
+        if (i >= 0 && i < databaseFunction.getDictionaryData().getListOfWordCache().size()) {
+            wordList.getSelectionModel().select(i);
+            wordList.getFocusModel().focus(i);
+            wordList.scrollTo(i);
+
+        }
+
+    }
+
+    public int getWordNearest(String i) {
+        int  counter = 0;
+        boolean found = false;
+        if(i.compareTo("") != 0)
+        for (String s : databaseFunction.getDictionaryData().getListOfWordCache()) {
+            if (i.charAt(0) >= s.charAt(0)) {
+                if (s.length() >= i.length()) {
+                    if (s.substring(0, i.length()).compareTo(i) == 0) {
+                        found = true;
+                        break;
+
+                    }
+                }
+
+            } else break;
+            counter++;
+
+        }
+        if(!found)
+            counter = -1;
+        return counter;
+    }
+
+    protected void handleSelectItems() {
         int i = (getSelectedIndex());
-        String word = getSelectedWord().replace("[","").replace("]","");
+        String word = getSelectedWord().replace("[", "").replace("]", "");
 
         curWordDef.setText(word);
         curWordMeaning.setText(databaseFunction.getDictionaryData().getListOfWordDescription().get(i));
         curWordPronounce.setText(
-                "/"+ databaseFunction.getDictionaryData().getListLOfWordPronounce().get(i)+"/");
+                "/" + databaseFunction.getDictionaryData().getListLOfWordPronounce().get(i) + "/");
 
     }
+
     public int getSelectedIndex() {
         return wordList.getSelectionModel().getSelectedIndex();
     }
@@ -51,6 +104,10 @@ public class Dictionary extends SceneController {
                 handleSelectItems();
             }
         });
+        searchBarText.textProperty().addListener((obs, oldText, newText) -> {
+            selectWord(getWordNearest(searchBarText.getText()));
 
+            // ...
+        });
     }
 }

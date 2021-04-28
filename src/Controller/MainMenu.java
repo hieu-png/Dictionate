@@ -10,7 +10,7 @@ public class MainMenu extends SceneController {
 
     @FXML protected Button buttonTest;
     @FXML protected void goToTest(ActionEvent event) {
-        //switchTo("Test",buttonTest.getScene());
+        switchTo("Test",buttonTest.getScene());
 
 
     }

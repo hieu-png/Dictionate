@@ -98,7 +98,8 @@ public class TestPronunciation extends SceneController {
         progressBar.setProgress(getProgress());
         int selectIndex = listOfQuestion.getSelectionModel().getSelectedIndex();
 
-        setQuestionPane(questionList.get(selectIndex).getID(),
+        setQuestionPane(
+                questionList.get(selectIndex).getID(),
                 questionList.get(selectIndex).getSelectedWordID(),
                 questionList.get(selectIndex).getCorrectAnswerId()
                 );
@@ -128,14 +129,17 @@ public class TestPronunciation extends SceneController {
         Random r = new Random();
 
         for(int i = 0; i < numberOfQuestion; i ++) {
+
             int randomDeviation = r.ints(
                     0,
                     4).findFirst().getAsInt();
+
             int randomWord = randomWordIndex();
             questionList.add(new TestQuestionP(
                     i+1,
                     randomWord,
                     randomDeviation));
+
             observableListOfQuestion.add(databaseFunction.getDictionaryData().getWordText(randomWord));
         }
     }
@@ -164,10 +168,12 @@ public class TestPronunciation extends SceneController {
     }
     public void setQuestionPane(Integer id, Integer wordID,Integer correctAnswerID) {
         wordToTest.setText(databaseFunction.getDictionaryData().getWordText(wordID));
-        questionNumber.setText(id.toString());
         String pronunciation = databaseFunction.getDictionaryData().getWordPronounce(wordID);
+
+        questionNumber.setText(id.toString());
        // int randomDeviation = r.ints(0,4).findFirst().getAsInt();
         Object[] answerArray = Answer.getToggles().toArray();
+
         for (int i = 0; i <= 3; i ++) {
             if(i == correctAnswerID) {
                 ((RadioButton) answerArray[i]).setText("/" +
@@ -176,9 +182,9 @@ public class TestPronunciation extends SceneController {
             } else {
                 String pronunciationOther = pronunciation;
                 int offset = 0;
-                while(pronunciationOther == pronunciation) {
-                    pronunciationOther = databaseFunction.getDictionaryData().getWordPronounce(wordID + i + offset);
+                while(pronunciationOther.compareTo(pronunciation) == 0) {
                     offset++;
+                    pronunciationOther = databaseFunction.getDictionaryData().getWordPronounce(wordID + i + offset);
                 }
                 ((RadioButton) answerArray[i]).setText("/" +
                         pronunciationOther

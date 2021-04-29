@@ -20,6 +20,10 @@ public class DatabaseQueryFunction {
         currentUser.setUser("","",null,"",0);
     }
 
+    public void getTimes() {
+
+    }
+
     public DatabaseQueryDictionary getDictionaryData() {
         return databaseQueryDictionary;
     }

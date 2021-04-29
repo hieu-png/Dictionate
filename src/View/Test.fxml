@@ -59,7 +59,7 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="254.0" style="-fx-background-color: #ffffff;">
                                        <children>
-                                          <Button fx:id="launchTestP" layoutX="183.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #4284f5;" text="Lauch test" textFill="WHITE" />
+                                          <Button fx:id="launchTestP" layoutX="183.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLaunchTestP" style="-fx-background-color: #4284f5;" text="Lauch test" textFill="WHITE" />
                                           <RadioButton fx:id="pEasy" layoutX="14.0" layoutY="96.0" mnemonicParsing="false" selected="true" text="Easy">
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="one" />
@@ -79,7 +79,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="491.0" prefWidth="267.0" GridPane.columnIndex="1">
                            <children>
-                              <Button fx:id="backToMainMenu" layoutX="208.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackToMainMenu" style="-fx-background-color: #4284f5;" text="Button" textFill="WHITE" />
+                              <Button fx:id="backToMainMenu" layoutX="208.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackToMainMenu" style="-fx-background-color: #4284f5;" text="Back" textFill="WHITE" />
                               <TitledPane animated="false" layoutY="156.0" prefHeight="224.0" prefWidth="269.0" text="Word meaning Test">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="252.0" style="-fx-background-color: #ffffff;">

@@ -11,5 +11,8 @@ public class Test extends SceneController {
     protected void handleBackToMainMenu(ActionEvent event)   {
         switchTo("MainMenu", backToMainMenu.getScene());
     }
-
+    @FXML
+    protected void handleLaunchTestP(ActionEvent event)   {
+        switchTo("TestPronunciation", backToMainMenu.getScene());
+    }
 }

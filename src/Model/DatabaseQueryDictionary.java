@@ -3,14 +3,13 @@ package Model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class DatabaseQueryDictionary {
     DatabaseQueryFunction databaseQueryFunction;
-    ObservableList<String> listOfWordCache;
+    ObservableList<String> listOfWordText;
     ArrayList<String> listOfWordDescription;
     ArrayList<String> listLOfWordPronounce;
     public DatabaseQueryDictionary(DatabaseQueryFunction databaseQueryFunction) {
@@ -18,14 +17,23 @@ public class DatabaseQueryDictionary {
         initializes();
     }
 
-    public ObservableList<String> getListOfWordCache() {
-        return listOfWordCache;
+    public ObservableList<String> getListOfWordText() {
+        return listOfWordText;
     }
 
     public ArrayList<String> getListLOfWordPronounce() {
         return listLOfWordPronounce;
     }
 
+    public String getWordText(int index) {
+        return listOfWordText.get(index);
+    }
+    public String getWordPronounce(int index) {
+        return listLOfWordPronounce.get(index);
+    }
+    public String getWordDescription(int index) {
+        return listOfWordDescription.get(index);
+    }
     public ArrayList<String> getListOfWordDescription() {
         return listOfWordDescription;
     }
@@ -62,9 +70,9 @@ public class DatabaseQueryDictionary {
             rs = stmt.executeQuery();
             listLOfWordPronounce = new ArrayList<>();
             listOfWordDescription = new ArrayList<>();
-            listOfWordCache = FXCollections.observableArrayList();
+            listOfWordText = FXCollections.observableArrayList();
             while(rs.next()) {
-                listOfWordCache.add(rs.getString("word"));
+                listOfWordText.add(rs.getString("word"));
                 listLOfWordPronounce.add(rs.getString("pronounce"));
                 listOfWordDescription.add(rs.getString("description"));
             }

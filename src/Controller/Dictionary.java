@@ -44,7 +44,7 @@ public class Dictionary extends SceneController {
         System.out.print("Input" + searchBarText.getText());
     }
     public void selectWord(int i) {
-        if (i >= 0 && i < databaseFunction.getDictionaryData().getListOfWordCache().size()) {
+        if (i >= 0 && i < databaseFunction.getDictionaryData().getListOfWordText().size()) {
             wordList.getSelectionModel().select(i);
             wordList.getFocusModel().focus(i);
             wordList.scrollTo(i);
@@ -57,7 +57,7 @@ public class Dictionary extends SceneController {
         int  counter = 0;
         boolean found = false;
         if(i.compareTo("") != 0)
-        for (String s : databaseFunction.getDictionaryData().getListOfWordCache()) {
+        for (String s : databaseFunction.getDictionaryData().getListOfWordText()) {
             if (i.charAt(0) >= s.charAt(0)) {
                 if (s.length() >= i.length()) {
                     if (s.substring(0, i.length()).compareTo(i) == 0) {
@@ -96,7 +96,7 @@ public class Dictionary extends SceneController {
     }
     @Override
     public void init() {
-        wordList.setItems(databaseFunction.getDictionaryData().getListOfWordCache());
+        wordList.setItems(databaseFunction.getDictionaryData().getListOfWordText());
         wordList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
             @Override

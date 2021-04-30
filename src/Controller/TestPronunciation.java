@@ -16,7 +16,7 @@ public class TestPronunciation extends SceneController {
 
     @FXML public Label wordToTest, questionNumber;
     @FXML public RadioButton answer1,answer2,answer3,answer4;
-    @FXML public Button backToTest,submitButton;
+    @FXML public Button backToTest,submitButton,previousButton,nextButton,saveButton;
     @FXML public ToggleGroup Answer;
     @FXML public ListView listOfQuestion; int previousIndex = 0;
     @FXML public ProgressBar progressBar;
@@ -124,7 +124,24 @@ public class TestPronunciation extends SceneController {
         handleSelectItems();
         System.out.println(100*(float)checkTestScore()/(float)questionList.size());
     }
+    @FXML protected void handleSaveButton(ActionEvent event) {
+        handleSelectItems();
+    }
+    @FXML protected void handleNextButton(ActionEvent event) {
+        selectItem(listOfQuestion.getSelectionModel().getSelectedIndex()+1);
 
+    }
+    @FXML protected void handlePreviousButton(ActionEvent event) {
+        selectItem(listOfQuestion.getSelectionModel().getSelectedIndex()-1);
+    }
+    public void selectItem(int index) {
+        if(index >= 0 && index < questionList.size()) {
+        listOfQuestion.getSelectionModel().select(index);
+        listOfQuestion.getFocusModel().focus(index);
+        listOfQuestion.scrollTo(index);
+        handleSelectItems();
+        }
+    }
     public void generateTest(int numberOfQuestion) {
         Random r = new Random();
 

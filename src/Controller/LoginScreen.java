@@ -44,7 +44,9 @@ public class LoginScreen extends SceneController {
             textMessage.setText("Logged in as " + userName);
 
             switchTo("MainMenu", textMessage.getScene());
-          databaseFunction.getCurrentUser().setUser(userName,
+          databaseFunction.getCurrentUser().setUser(
+                  databaseFunction.getUserData().getUserID(userName),
+                  userName,
                   databaseFunction.getUserData().getUserFullName(userName),
                   databaseFunction.getUserData().getUserBirthday(userName),
                   databaseFunction.getUserData().getUserEmail(userName),

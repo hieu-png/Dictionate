@@ -5,6 +5,7 @@ public class DatabaseQueryFunction {
     User currentUser;
     DatabaseQueryDictionary databaseQueryDictionary;
     DatabaseQueryUserData databaseQueryUserData;
+    DatabaseQueryTest databaseQueryTest;
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
@@ -17,11 +18,15 @@ public class DatabaseQueryFunction {
         return databaseQueryUserData;
     }
     public void clearUserData() {
-        currentUser.setUser("","",null,"",0);
+        currentUser.setUser(0,"","",null,"",0);
     }
 
     public void getTimes() {
 
+    }
+
+    public DatabaseQueryTest getDatabaseQueryTest() {
+        return databaseQueryTest;
     }
 
     public DatabaseQueryDictionary getDictionaryData() {
@@ -38,7 +43,7 @@ public class DatabaseQueryFunction {
 
     public DatabaseQueryFunction() {
         try {
-            currentUser = new User("","",null,"",0);
+            currentUser = new User(0,"","",null,"",0);
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/dictionary",
@@ -47,6 +52,7 @@ public class DatabaseQueryFunction {
             System.out.println("ConnectionSuccess");
             databaseQueryDictionary = new DatabaseQueryDictionary(this);
             databaseQueryUserData = new DatabaseQueryUserData(this);
+            databaseQueryTest = new DatabaseQueryTest(this);
         } catch (Exception e) {
             e.printStackTrace();
         }

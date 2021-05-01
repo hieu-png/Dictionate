@@ -7,10 +7,12 @@ public class User {
     String fullName;
     String email;
     Date birthday;
+    int userID;
     int passwordLength;
     int passwordHashed;
 
-    public User(String username, String fullName, Date birthday, String email, int passwordLength) {
+    public User(int userID, String username, String fullName, Date birthday, String email, int passwordLength) {
+        this.userID = userID;
         this.username = username;
         this.fullName = fullName;
         this.email = email;
@@ -19,7 +21,12 @@ public class User {
 
     }
 
-    public void setUser(String username, String fullName, Date birthday, String email, int passwordLength) {
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUser(int userID, String username, String fullName, Date birthday, String email, int passwordLength) {
+        this.userID = userID;
         this.username = username;
         this.fullName = fullName;
         this.email = email;

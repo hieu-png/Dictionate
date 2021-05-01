@@ -9,7 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 public class TestPronunciation extends SceneController {
@@ -20,7 +25,10 @@ public class TestPronunciation extends SceneController {
     @FXML public ToggleGroup Answer;
     @FXML public ListView listOfQuestion; int previousIndex = 0;
     @FXML public ProgressBar progressBar;
+    LocalDateTime dateTimeTaken, dateTimeFinished;
+    Boolean summitted = false;
     ObservableList<String> observableListOfQuestion = FXCollections.observableArrayList();
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     ArrayList<TestQuestionP> questionList = new ArrayList<>();
     //Test Structure: ID, selectedWord, answerNumber
@@ -89,6 +97,9 @@ public class TestPronunciation extends SceneController {
             }
         });
         listOfQuestion.getSelectionModel().select(0);
+        dateTimeTaken = LocalDateTime.now();
+        System.out.print(dateTimeTaken);
+
     }
     // khi chon danh sach
     protected void handleSelectItems() {
@@ -117,12 +128,33 @@ public class TestPronunciation extends SceneController {
     }
     @FXML
     protected void handleBackToTest(ActionEvent event)   {
+        if(showConfirmation("Stop test",
+                "Do you really want to cancel the test?",
+                "Information will not be saved."))
         switchTo("Test", backToTest.getScene());
     }
     @FXML
     protected void handleSummitButton(ActionEvent event) {
         handleSelectItems();
-        System.out.println(100*(float)checkTestScore()/(float)questionList.size());
+        int score = (int)(100*(float)checkTestScore()/(float)questionList.size());
+        if(showConfirmation("Finish test",
+                "Do you want to submit the test?",
+                "You can't change the answer after submitting!")) {
+            dateTimeFinished = LocalDateTime.now();
+
+
+            databaseFunction.getDatabaseQueryTest().addRecord(Test.TEST_PRONUNCIATION,
+            Timestamp.valueOf(dateTimeTaken),
+            Timestamp.valueOf(dateTimeFinished),
+            databaseFunction.getCurrentUser().getUserID(),
+             score
+            );
+            if(showConfirmation("Test finished",
+                    "Do you want to review the test?",
+                    "Your score is: " + score + "!")) {
+
+            }
+        }
     }
     @FXML protected void handleSaveButton(ActionEvent event) {
         handleSelectItems();

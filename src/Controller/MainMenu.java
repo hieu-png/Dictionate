@@ -10,6 +10,9 @@ public class MainMenu extends SceneController {
 
     @FXML protected Button buttonTest;
     @FXML protected void goToTest(ActionEvent event) {
+        if(databaseFunction.getCurrentUser().getUsername().compareTo("") == 0) {
+            showAlert("Take test","Guest user can't take test","Please login or create an account to use.");
+        } else
         switchTo("Test",buttonTest.getScene());
 
 
@@ -25,7 +28,16 @@ public class MainMenu extends SceneController {
 
     }
     @FXML protected void goToUserInfoView(ActionEvent event) {
+        if(databaseFunction.getCurrentUser().getUsername().compareTo("") == 0) {
+            if(showConfirmation("User info",
+                    "Guest user can't use this!",
+                    "Do you want to log out?")){
+                databaseFunction.clearUserData();
+                switchTo("LoginScreen", buttonTest.getScene());
+            }
+        } else
         switchTo("UserInfoView",buttonTest.getScene());
 
     }
+
 }

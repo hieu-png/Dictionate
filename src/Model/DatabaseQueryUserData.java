@@ -96,7 +96,27 @@ public class DatabaseQueryUserData {
         }
         return null;
     }
+    public int getUserID(String username) {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = databaseQueryFunction.getConnection().
+                    prepareStatement("SELECT userID FROM userinfo WHERE username = ?");
+            stmt.setString(1,username);
+            rs = stmt.executeQuery();
+            if (!rs.next()) {
+                return 0;
+            } else
+                return rs.getInt("userID");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try{ if(rs !=null) rs.close();} catch (Exception e){};
+            try{ if(stmt !=null) stmt.close();} catch (Exception e){};
 
+        }
+        return 0;
+    }
 
 
 }

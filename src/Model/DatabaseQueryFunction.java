@@ -46,9 +46,9 @@ public class DatabaseQueryFunction {
             currentUser = new User(0,"","",null,"",0);
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/dictionary",
+                    "jdbc:mysql://localhost:3306/dictionary?characterEncoding=latin1&useConfigs=maxPerformance",
                     "root",
-                    "123");
+                    "hieu3001");
             System.out.println("ConnectionSuccess");
             databaseQueryDictionary = new DatabaseQueryDictionary(this);
             databaseQueryUserData = new DatabaseQueryUserData(this);

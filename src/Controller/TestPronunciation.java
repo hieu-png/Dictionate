@@ -151,7 +151,7 @@ public class TestPronunciation extends SceneController {
             );
             if(showConfirmation("Test finished",
                     "Do you want to review the test?",
-                    "Your score is: " + score + "!")) {
+                    "Your score is: " + score + "/100!")) {
 
             }
         }

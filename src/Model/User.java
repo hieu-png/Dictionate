@@ -20,6 +20,9 @@ public class User {
         this.passwordLength = passwordLength;
 
     }
+    public String getUserIDString() {
+        return ((Integer)userID).toString();
+    }
 
     public int getUserID() {
         return userID;

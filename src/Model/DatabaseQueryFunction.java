@@ -48,7 +48,7 @@ public class DatabaseQueryFunction {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/dictionary?characterEncoding=latin1&useConfigs=maxPerformance",
                     "root",
-                    "hieu3001");
+                    "123");
             System.out.println("ConnectionSuccess");
             databaseQueryDictionary = new DatabaseQueryDictionary(this);
             databaseQueryUserData = new DatabaseQueryUserData(this);

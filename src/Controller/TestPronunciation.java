@@ -10,23 +10,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Random;
 
 public class TestPronunciation extends SceneController {
 
     @FXML public Label wordToTest, questionNumber;
-    @FXML public RadioButton answer1,answer2,answer3,answer4;
+    @FXML public RadioButton answer0, answer1, answer2, answer3;
     @FXML public Button backToTest,submitButton,previousButton,nextButton,saveButton;
     @FXML public ToggleGroup Answer;
     @FXML public ListView listOfQuestion; int previousIndex = 0;
     @FXML public ProgressBar progressBar;
     int difficulty = 1;
-
+    RadioButton[] answerArray= new RadioButton[4];
     public int getDifficulty() {
         return difficulty;
     }
@@ -103,6 +101,11 @@ public class TestPronunciation extends SceneController {
     @Override
     public void init() {
         super.init();
+        answerArray[0] =  answer0;
+        answerArray[1] =  answer1;
+        answerArray[2] =  answer2;
+        answerArray[3] =  answer3;
+
         generateTest(15+(difficulty - 1) * 10);
         listOfQuestion.setItems(observableListOfQuestion);
         listOfQuestion.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -114,7 +117,6 @@ public class TestPronunciation extends SceneController {
         });
         listOfQuestion.getSelectionModel().select(0);
         dateTimeTaken = LocalDateTime.now();
-        System.out.print(dateTimeTaken);
 
     }
     // khi chon danh sach
@@ -144,10 +146,10 @@ public class TestPronunciation extends SceneController {
         }
         //xoa cac select neu no la chua dc chon
         if(questionList.get(selectIndex).getAnsweredID() == -1) {
+            answer0.setSelected(false);
             answer1.setSelected(false);
             answer2.setSelected(false);
             answer3.setSelected(false);
-            answer4.setSelected(false);
         } else
         {
             setSelectedId(questionList.get(selectIndex).getAnsweredID(),true);
@@ -222,10 +224,10 @@ public class TestPronunciation extends SceneController {
             if(showConfirmation("Test finished",
                     "Do you want to review the test?",
                     "Your score is: " + score + "/100!")) {
+                answer0.setDisable(true);
                 answer1.setDisable(true);
                 answer2.setDisable(true);
                 answer3.setDisable(true);
-                answer4.setDisable(true);
                 handleSelectItems();
                 submitButton.setDisable(true);
 
@@ -256,16 +258,15 @@ public class TestPronunciation extends SceneController {
         questionList.clear();
     }
     public void setQuestionPane(Integer id, Integer wordID,Integer correctAnswerID) {
-        wordToTest.setText(databaseFunction.getDictionaryData().getWordText(wordID));
         String pronunciation = databaseFunction.getDictionaryData().getWordPronounce(wordID);
 
+        wordToTest.setText(databaseFunction.getDictionaryData().getWordText(wordID));
+
         questionNumber.setText(id.toString());
-       // int randomDeviation = r.ints(0,4).findFirst().getAsInt();
-        Object[] answerArray = Answer.getToggles().toArray();
 
         for (int i = 0; i <= 3; i ++) {
             if(i == correctAnswerID) {
-                ((RadioButton) answerArray[i]).setText("/" +
+                (answerArray[i]).setText("/" +
                          pronunciation +
                         "/");
             } else {
@@ -282,23 +283,23 @@ public class TestPronunciation extends SceneController {
         }
     }
     public void setQuestionPane(Integer id, Integer wordID,int correctAnswerID, int answeredID) {
-        wordToTest.setText(databaseFunction.getDictionaryData().getWordText(wordID));
         String pronunciation = databaseFunction.getDictionaryData().getWordPronounce(wordID);
+        wordToTest.setText(databaseFunction.getDictionaryData().getWordText(wordID));
 
         questionNumber.setText(id.toString());
         // int randomDeviation = r.ints(0,4).findFirst().getAsInt();
-        Object[] answerArray = Answer.getToggles().toArray();
 
         for (int i = 0; i <= 3; i ++) {
-            RadioButton button = ((RadioButton) answerArray[i]);
+            RadioButton button = (answerArray[i]);
             if(i == correctAnswerID) {
                 button.setText("/" +
                         pronunciation +
                         "/");
-                button.setStyle("-fx-text-fill: red; -fx-font-size: 13px;");
+                if(answeredID == correctAnswerID)
+                    button.setStyle("-fx-text-fill: green; -fx-font-size: 13px;");
+                else
+                    button.setStyle("-fx-text-fill: red; -fx-font-size: 13px;");
 
-               // if(answeredID == correctAnswerID)
-                //    button.setStyle("-fx-text-fill: green; -fx-font-size: 13px;");
             } else {
                 String pronunciationOther = pronunciation;
                 int offset = 0;
@@ -322,32 +323,29 @@ public class TestPronunciation extends SceneController {
                 .findFirst().getAsInt();
     }
     public int getSelectedId() {
-        if(answer1.isSelected())
+        if(answer0.isSelected())
             return 0;
-        else if (answer2.isSelected())
+        else if (answer1.isSelected())
             return 1;
-        else if (answer3.isSelected())
+        else if (answer2.isSelected())
             return 2;
-        else if (answer4.isSelected())
+        else if (answer3.isSelected())
             return 3;
         else return -1;
     }
     public void setSelectedId(int id,boolean value) {
         switch (id) {
             case 0:
-                answer1.setSelected(value);
+                answer0.setSelected(value);
                 break;
             case 1:
-                answer2.setSelected(value);
-
+                answer1.setSelected(value);
                 break;
             case 2:
-                answer3.setSelected(value);
-
+                answer2.setSelected(value);
                 break;
             case 3:
-                answer4.setSelected(value);
-
+                answer3.setSelected(value);
                 break;
         }
     }

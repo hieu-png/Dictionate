@@ -39,14 +39,14 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <RadioButton fx:id="answer2" mnemonicParsing="false" text="RadioButton" GridPane.rowIndex="1">
+                        <RadioButton fx:id="answer1" mnemonicParsing="false" text="RadioButton" GridPane.rowIndex="1">
                            <toggleGroup>
                               <ToggleGroup fx:id="Answer" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="answer1" mnemonicParsing="false" text="RadioButton" toggleGroup="$Answer" />
-                        <RadioButton fx:id="answer3" mnemonicParsing="false" text="RadioButton" toggleGroup="$Answer" GridPane.rowIndex="2" />
-                        <RadioButton fx:id="answer4" mnemonicParsing="false" text="RadioButton" toggleGroup="$Answer" GridPane.rowIndex="3" />
+                        <RadioButton fx:id="answer0" mnemonicParsing="false" text="RadioButton" toggleGroup="$Answer" />
+                        <RadioButton fx:id="answer2" mnemonicParsing="false" text="RadioButton" toggleGroup="$Answer" GridPane.rowIndex="2" />
+                        <RadioButton fx:id="answer3" mnemonicParsing="false" text="RadioButton" toggleGroup="$Answer" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <AnchorPane layoutX="26.0" layoutY="191.0" prefHeight="89.0" prefWidth="522.0">

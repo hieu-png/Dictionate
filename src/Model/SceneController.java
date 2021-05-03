@@ -25,6 +25,10 @@ public class SceneController {
     public void init() {
 
     }
+    /*
+    public void initSpecial() {
+
+    }*/
 
     /**
      *
@@ -34,23 +38,26 @@ public class SceneController {
 
 
 
-    public void switchTo(String stageName,Scene scene){
+    public SceneController switchTo(String stageName,Scene scene){
+        SceneController s = null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/"+stageName+".fxml"));
 
             Parent root = loader.load();
 
-            SceneController s = (SceneController) loader.getController();
+            s = (SceneController) loader.getController();
             s.setDatabaseFunction(databaseFunction);
 
             Stage stage = (Stage) scene.getWindow();
             stage.setScene(new Scene(root));
+            //s.initSpecial();
             s.init();
             stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return s;
     }
     public void showAlert(String title, String text, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

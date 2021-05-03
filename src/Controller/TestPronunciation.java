@@ -25,8 +25,18 @@ public class TestPronunciation extends SceneController {
     @FXML public ToggleGroup Answer;
     @FXML public ListView listOfQuestion; int previousIndex = 0;
     @FXML public ProgressBar progressBar;
+    int difficulty = 1;
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
     LocalDateTime dateTimeTaken, dateTimeFinished;
-    Boolean summitted = false;
+    Boolean submitted = false;
     ObservableList<String> observableListOfQuestion = FXCollections.observableArrayList();
     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
@@ -84,10 +94,16 @@ public class TestPronunciation extends SceneController {
         }
     }
     // chay luc duoc goi
+
+
+    public void initSpecial(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
     @Override
     public void init() {
         super.init();
-        generateTest(15);
+        generateTest(15+(difficulty - 1) * 10);
         listOfQuestion.setItems(observableListOfQuestion);
         listOfQuestion.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
@@ -103,17 +119,29 @@ public class TestPronunciation extends SceneController {
     }
     // khi chon danh sach
     protected void handleSelectItems() {
-        System.out.println(getSelectedId() + questionList.get(previousIndex).toString());
-        questionList.get(previousIndex).setAnsweredID(getSelectedId());
-
-        progressBar.setProgress(getProgress());
         int selectIndex = listOfQuestion.getSelectionModel().getSelectedIndex();
 
+        if(!submitted) {
+            questionList.get(previousIndex).setAnsweredID(getSelectedId());
+
+            System.out.println(getSelectedId() + questionList.get(previousIndex).toString());
+            progressBar.setProgress(getProgress());
         setQuestionPane(
                 questionList.get(selectIndex).getID(),
                 questionList.get(selectIndex).getSelectedWordID(),
                 questionList.get(selectIndex).getCorrectAnswerId()
                 );
+            previousIndex = selectIndex;
+
+        }
+        else {
+            setQuestionPane(
+                    questionList.get(selectIndex).getID(),
+                    questionList.get(selectIndex).getSelectedWordID(),
+                    questionList.get(selectIndex).getCorrectAnswerId(),
+                    questionList.get(selectIndex).getAnsweredID()
+            );
+        }
         //xoa cac select neu no la chua dc chon
         if(questionList.get(selectIndex).getAnsweredID() == -1) {
             answer1.setSelected(false);
@@ -124,37 +152,19 @@ public class TestPronunciation extends SceneController {
         {
             setSelectedId(questionList.get(selectIndex).getAnsweredID(),true);
         }
-        previousIndex = selectIndex;
+
     }
     @FXML
     protected void handleBackToTest(ActionEvent event)   {
-        if(showConfirmation("Stop test",
+
+        if(submitted || showConfirmation("Stop test",
                 "Do you really want to cancel the test?",
                 "Information will not be saved."))
         switchTo("Test", backToTest.getScene());
     }
     @FXML
     protected void handleSummitButton(ActionEvent event) {
-        handleSelectItems();
-        int score = (int)(100*(float)checkTestScore()/(float)questionList.size());
-        if(showConfirmation("Finish test",
-                "Do you want to submit the test?",
-                "You can't change the answer after submitting!")) {
-            dateTimeFinished = LocalDateTime.now();
-
-
-            databaseFunction.getDatabaseQueryTest().addRecord(Test.TEST_PRONUNCIATION,
-            Timestamp.valueOf(dateTimeTaken),
-            Timestamp.valueOf(dateTimeFinished),
-            databaseFunction.getCurrentUser().getUserID(),
-             score
-            );
-            if(showConfirmation("Test finished",
-                    "Do you want to review the test?",
-                    "Your score is: " + score + "/100!")) {
-
-            }
-        }
+        submit();
     }
     @FXML protected void handleSaveButton(ActionEvent event) {
         handleSelectItems();
@@ -190,6 +200,36 @@ public class TestPronunciation extends SceneController {
                     randomDeviation));
 
             observableListOfQuestion.add(databaseFunction.getDictionaryData().getWordText(randomWord));
+        }
+    }
+
+    public void submit() {
+        handleSelectItems();
+        int score = (int)(100*(float)checkTestScore()/(float)questionList.size());
+        if(showConfirmation("Finish test",
+                "Do you want to submit the test?",
+                "You can't change the answer after submitting!")) {
+            dateTimeFinished = LocalDateTime.now();
+
+
+            databaseFunction.getDatabaseQueryTest().addRecord(Test.TEST_PRONUNCIATION,
+                    Timestamp.valueOf(dateTimeTaken),
+                    Timestamp.valueOf(dateTimeFinished),
+                    databaseFunction.getCurrentUser().getUserID(),
+                    score
+            );
+            submitted = true;
+            if(showConfirmation("Test finished",
+                    "Do you want to review the test?",
+                    "Your score is: " + score + "/100!")) {
+                answer1.setDisable(true);
+                answer2.setDisable(true);
+                answer3.setDisable(true);
+                answer4.setDisable(true);
+                handleSelectItems();
+                submitButton.setDisable(true);
+
+            }
         }
     }
 
@@ -241,7 +281,38 @@ public class TestPronunciation extends SceneController {
             }
         }
     }
+    public void setQuestionPane(Integer id, Integer wordID,int correctAnswerID, int answeredID) {
+        wordToTest.setText(databaseFunction.getDictionaryData().getWordText(wordID));
+        String pronunciation = databaseFunction.getDictionaryData().getWordPronounce(wordID);
 
+        questionNumber.setText(id.toString());
+        // int randomDeviation = r.ints(0,4).findFirst().getAsInt();
+        Object[] answerArray = Answer.getToggles().toArray();
+
+        for (int i = 0; i <= 3; i ++) {
+            RadioButton button = ((RadioButton) answerArray[i]);
+            if(i == correctAnswerID) {
+                button.setText("/" +
+                        pronunciation +
+                        "/");
+                button.setStyle("-fx-text-fill: red; -fx-font-size: 13px;");
+
+               // if(answeredID == correctAnswerID)
+                //    button.setStyle("-fx-text-fill: green; -fx-font-size: 13px;");
+            } else {
+                String pronunciationOther = pronunciation;
+                int offset = 0;
+                while(pronunciationOther.compareTo(pronunciation) == 0) {
+                    offset++;
+                    pronunciationOther = databaseFunction.getDictionaryData().getWordPronounce(wordID + i + offset);
+                }
+                button.setText("/" +
+                        pronunciationOther
+                        + "/");
+                button.setStyle("-fx-text-fill: black; -fx-font-size: 13px;");
+            }
+        }
+    }
 
     public int randomWordIndex() {
         Random r = new Random();

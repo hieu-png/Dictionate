@@ -76,13 +76,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="183.0" layoutY="14.0" prefHeight="545.0" prefWidth="560.0">
+                        <TableView fx:id="infoTable" layoutX="183.0" layoutY="14.0" prefHeight="545.0" prefWidth="554.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Test ID" />
-                            <TableColumn prefWidth="128.0" text="Test type" />
-                              <TableColumn minWidth="0.0" prefWidth="91.0" text="Point" />
-                              <TableColumn prefWidth="111.0" text="Date taken" />
-                              <TableColumn minWidth="0.0" prefWidth="104.0" text="C2" />
+                            <TableColumn fx:id="testIDColumn" prefWidth="64.0" text="Test ID" />
+                            <TableColumn fx:id="testTypeColumn" prefWidth="136.0" text="Test type" />
+                              <TableColumn fx:id="scoreColumn" minWidth="0.0" prefWidth="94.0" text="Point" />
+                              <TableColumn fx:id="dateTakenColumn" prefWidth="167.0" text="Date taken" />
+                              <TableColumn fx:id="timeTakenColumn" minWidth="0.0" prefWidth="91.0" text="Time" />
                           </columns>
                         </TableView>
                      </children>

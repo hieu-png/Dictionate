@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
@@ -13,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Dictionary">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Dictionary">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -21,7 +26,7 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="270.0" style="-fx-background-color: #4284f5;">
                      <children>
-                        <ListView fx:id="wordList" layoutX="15.0" layoutY="69.0" prefHeight="497.0" prefWidth="208.0" />
+                        <ListView fx:id="wordList" layoutX="14.0" layoutY="101.0" prefHeight="497.0" prefWidth="208.0" />
                         <TextField fx:id="searchBarText" layoutX="67.0" layoutY="14.0" onAction="#handleSearchText" prefHeight="35.0" prefWidth="159.0" promptText="Word here" />
                         <Button fx:id="searchButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSearchButton" prefHeight="35.0" prefWidth="41.0" style="-fx-background-color: #ffffff;" text="🔍" textFill="#4284f5" />
                      </children>
@@ -36,6 +41,12 @@
                            </font>
                         </Text>
                         <Text fx:id="curWordPronounce" layoutX="24.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/AIE/" wrappingWidth="337.35546875" />
+                        <Button fx:id="soundButton" layoutX="271.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleSoundButton" prefHeight="34.0" prefWidth="155.0" style="-fx-background-color: #ffffff;" text="Sound" textAlignment="RIGHT" />
+                        <ImageView fitHeight="29.0" fitWidth="40.0" layoutX="279.0" layoutY="23.0" pickOnBounds="true">
+                           <image>
+                              <Image url="https://i.imgur.com/nIf8Rul.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
               </items>

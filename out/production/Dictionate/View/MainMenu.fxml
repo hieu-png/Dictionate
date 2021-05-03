@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToolBar?>
@@ -9,9 +15,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainMenu">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainMenu">
    <children>
+      <ImageView fitHeight="557.0" fitWidth="800.0" layoutY="34.0" pickOnBounds="true">
+         <image>
+            <Image url="https://i.imgur.com/jUPbDB1.jpg" />
+         </image>
+      </ImageView>
       <GridPane alignment="center" hgap="30" prefHeight="600.0" prefWidth="800.0" vgap="30">
          <padding>
             <Insets bottom="10" left="10" right="10" top="10" />
@@ -25,24 +35,24 @@
             <RowConstraints />
          </rowConstraints>
          <children>
-            <Button minHeight="200" minWidth="200" onAction="#goToDictionary" style="-fx-background-color: #4284f5;" text="Dictionary" textFill="WHITE">
+            <Button cacheShape="false" focusTraversable="false" minHeight="104.0" minWidth="200" onAction="#goToDictionary" opacity="0.55" prefHeight="104.0" prefWidth="200.0" rotate="-6.3" scaleShape="false" text="Dictionary" textFill="#3b05ff">
                <font>
-                  <Font name="Arial" size="20.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Button>
-            <Button minHeight="200" minWidth="200" onAction="#goToUserInfoView" style="-fx-background-color: #4284f5;" text="User Info" textFill="WHITE" GridPane.columnIndex="1">
+            <Button focusTraversable="false" minHeight="102.0" minWidth="200" onAction="#goToUserInfoView" opacity="0.55" prefHeight="104.0" prefWidth="200.0" rotate="5.2" text="User Info" textFill="#085beb" GridPane.columnIndex="1">
                <font>
-                  <Font name="Arial" size="20.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="buttonTest" minHeight="200" minWidth="200" onAction="#goToTest" style="-fx-background-color: #4284f5;" text="Test" textFill="WHITE" GridPane.rowIndex="1">
+            <Button fx:id="buttonTest" minHeight="83.0" minWidth="200" onAction="#goToTest" opacity="0.55" prefHeight="104.0" prefWidth="200.0" rotate="7.1" text="Test" textFill="#4f02f7" GridPane.rowIndex="1">
                <font>
-                  <Font name="Arial" size="20.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Button>
-            <Button minHeight="200" minWidth="200" onAction="#goToSettings" style="-fx-background-color: #4284f5;" text="Setting" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button minHeight="103.0" minWidth="200" onAction="#goToSettings" opacity="0.55" prefHeight="103.0" prefWidth="200.0" rotate="-13.0" text="Setting" textFill="#5d00f7" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font name="Arial" size="20.0" />
+                  <Font name="Arial Bold" size="24.0" />
                </font>
             </Button>
          </children>

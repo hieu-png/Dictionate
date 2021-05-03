@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.SceneController;
+import Model.TextSpeech;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -13,6 +14,8 @@ import javafx.scene.text.Text;
 
 public class Dictionary extends SceneController {
 
+    private TextSpeech textspeech = new TextSpeech();
+
     @FXML
     public ListView wordList;
     @FXML
@@ -22,7 +25,7 @@ public class Dictionary extends SceneController {
     @FXML
     public Text curWordDef, curWordPronounce;
     @FXML
-    protected Button toMainMenu, searchButton;
+    protected Button toMainMenu, searchButton, soundButton;
     boolean loaded = false;
 
     @FXML
@@ -38,6 +41,13 @@ public class Dictionary extends SceneController {
         System.out.print("Input" + searchBarText.getText());
 
     }
+
+    @FXML
+    protected void handleSoundButton(ActionEvent event) {
+        String word = searchBarText.getText();
+        textspeech.speakWord(word);
+    }
+
     @FXML
     protected void handleSearchText(ActionEvent event) {
         selectWord(getWordNearest(searchBarText.getText()));

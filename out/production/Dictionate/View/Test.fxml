@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -16,7 +21,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Test">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Test">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -55,34 +60,19 @@
                      <children>
                         <AnchorPane prefHeight="569.0" prefWidth="220.0">
                            <children>
-                              <TitledPane animated="false" layoutY="156.0" prefHeight="224.0" prefWidth="264.0" text="Pronunciation Test">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="254.0" style="-fx-background-color: #ffffff;">
-                                       <children>
-                                          <Button fx:id="launchTestP" layoutX="183.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLaunchTestP" style="-fx-background-color: #4284f5;" text="Lauch test" textFill="WHITE" />
-                                          <RadioButton fx:id="pEasy" layoutX="14.0" layoutY="96.0" mnemonicParsing="false" selected="true" text="Easy">
-                                             <toggleGroup>
-                                                <ToggleGroup fx:id="one" />
-                                             </toggleGroup>
-                                          </RadioButton>
-                                          <RadioButton fx:id="pMedium" layoutX="14.0" layoutY="124.0" mnemonicParsing="false" text="Medium" toggleGroup="$one" />
-                                          <RadioButton fx:id="pHard" layoutX="14.0" layoutY="149.0" mnemonicParsing="false" text="Hard" toggleGroup="$one" />
-                                          <Label layoutX="22.0" layoutY="18.0" text="Pronunciation Test" />
-                                          <Label layoutX="22.0" layoutY="39.0" text="Test Info" />
-                                          <Separator layoutY="81.0" prefHeight="4.0" prefWidth="267.0" />
-                                          <Label layoutX="112.0" layoutY="96.0" text="Description" />
-                                       </children>
-                                    </AnchorPane>
-                                </content>
-                              </TitledPane>
+                              <Label layoutX="-1.0" layoutY="18.0" prefHeight="114.0" prefWidth="472.0" text="E - TRAINING" textAlignment="CENTER" textFill="#6e69dd">
+                                 <font>
+                                    <Font name="Algerian" size="64.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="491.0" prefWidth="267.0" GridPane.columnIndex="1">
                            <children>
                               <Button fx:id="backToMainMenu" layoutX="208.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackToMainMenu" style="-fx-background-color: #4284f5;" text="Back" textFill="WHITE" />
-                              <TitledPane animated="false" layoutY="156.0" prefHeight="224.0" prefWidth="269.0" text="Word meaning Test">
+                              <TitledPane animated="false" layoutX="-157.0" layoutY="210.0" prefHeight="265.0" prefWidth="360.0" text="Word meaning Test">
                                  <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="252.0" style="-fx-background-color: #ffffff;">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="255.0" style="-fx-background-color: #ffffff;">
                                        <children>
                                           <Button fx:id="launchTestWM" layoutX="183.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #4284f5;" text="Lauch test" textFill="WHITE" />
                                           <RadioButton fx:id="wmEasy" layoutX="14.0" layoutY="96.0" mnemonicParsing="false" selected="true" text="Easy">
@@ -104,11 +94,31 @@
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <Label layoutX="51.0" layoutY="39.0" text="Test">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Label>
+                  <ImageView fitHeight="122.0" fitWidth="196.0" layoutX="30.0" layoutY="8.0" pickOnBounds="true">
+                     <image>
+                        <Image url="https://i.imgur.com/LqzgKM1.jpg" />
+                     </image>
+                  </ImageView>
+                  <TitledPane animated="false" layoutX="7.0" layoutY="211.0" prefHeight="265.0" prefWidth="360.0" text="Pronunciation Test">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="255.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Button fx:id="launchTestP" layoutX="183.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleLaunchTestP" style="-fx-background-color: #4284f5;" text="Lauch test" textFill="WHITE" />
+                              <RadioButton fx:id="pEasy" layoutX="14.0" layoutY="96.0" mnemonicParsing="false" selected="true" text="Easy">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="one" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="pMedium" layoutX="14.0" layoutY="124.0" mnemonicParsing="false" text="Medium" toggleGroup="$one" />
+                              <RadioButton fx:id="pHard" layoutX="14.0" layoutY="149.0" mnemonicParsing="false" text="Hard" toggleGroup="$one" />
+                              <Label layoutX="22.0" layoutY="18.0" text="Pronunciation Test" />
+                              <Label layoutX="22.0" layoutY="39.0" text="Test Info" />
+                              <Separator layoutY="81.0" prefHeight="4.0" prefWidth="267.0" />
+                              <Label layoutX="112.0" layoutY="96.0" text="Description" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
                </children>
             </AnchorPane>
          </center>

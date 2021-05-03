@@ -71,7 +71,7 @@
                   <Image url="https://i.imgur.com/vbhUMts.png" />
                </image>
             </ImageView>
-            <Label layoutX="87.0" layoutY="64.0" prefHeight="45.0" prefWidth="350.0" text="Welcome to Dictionate" textAlignment="CENTER" textFill="#4287f5" wrapText="true">
+            <Label layoutX="87.0" layoutY="64.0" prefHeight="45.0" prefWidth="350.0" text="Welcome to E - Training" textAlignment="CENTER" textFill="#4287f5" wrapText="true">
                <font>
                   <Font name="Berlin Sans FB" size="33.0" />
                </font>

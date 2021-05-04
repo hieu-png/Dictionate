@@ -44,7 +44,7 @@ public class Dictionary extends SceneController {
 
     @FXML
     protected void handleSoundButton(ActionEvent event) {
-        String word = searchBarText.getText();
+        String word = curWordDef.getText();
         textspeech.speakWord(word);
     }
 

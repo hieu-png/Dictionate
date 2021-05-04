@@ -17,7 +17,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainMenu">
    <children>
-      <ImageView fitHeight="557.0" fitWidth="800.0" layoutY="34.0" pickOnBounds="true">
+      <ImageView fitHeight="591.0" fitWidth="800.0" pickOnBounds="true">
          <image>
             <Image url="https://i.imgur.com/jUPbDB1.jpg" />
          </image>
@@ -57,10 +57,5 @@
             </Button>
          </children>
       </GridPane>
-      <ToolBar prefHeight="27.0" prefWidth="800.0">
-        <items>
-          <Button mnemonicParsing="false" text="Button" />
-        </items>
-      </ToolBar>
    </children>
 </AnchorPane>

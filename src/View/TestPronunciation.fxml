@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -13,7 +17,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TestPronunciation">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TestPronunciation">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -39,24 +43,30 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <RadioButton fx:id="answer2" mnemonicParsing="false" text="RadioButton" GridPane.rowIndex="1">
+                        <RadioButton fx:id="answer2" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="RadioButton" GridPane.rowIndex="1">
                            <toggleGroup>
                               <ToggleGroup fx:id="Answer" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="answer1" mnemonicParsing="false" text="RadioButton" toggleGroup="$Answer" />
-                        <RadioButton fx:id="answer3" mnemonicParsing="false" text="RadioButton" toggleGroup="$Answer" GridPane.rowIndex="2" />
-                        <RadioButton fx:id="answer4" mnemonicParsing="false" text="RadioButton" toggleGroup="$Answer" GridPane.rowIndex="3" />
+                        <RadioButton fx:id="answer1" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="RadioButton" toggleGroup="$Answer" />
+                        <RadioButton fx:id="answer3" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="RadioButton" toggleGroup="$Answer" GridPane.rowIndex="2" />
+                        <RadioButton fx:id="answer4" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" text="RadioButton" toggleGroup="$Answer" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <AnchorPane layoutX="26.0" layoutY="191.0" prefHeight="89.0" prefWidth="522.0">
                      <children>
-                        <Label fx:id="wordToTest" layoutX="11.0" layoutY="42.0" text="Label" />
+                        <Label fx:id="wordToTest" layoutX="11.0" layoutY="42.0" prefHeight="33.0" prefWidth="172.0" text="Label">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
                         <Label layoutX="11.0" layoutY="6.0" text="Word" />
                         <Label fx:id="questionNumber" layoutX="66.0" layoutY="6.0" text="1" />
                      </children>
                   </AnchorPane>
-                  <Label layoutX="33.0" layoutY="61.0" text="Select the correct pronunciation of the word!" />
+                  <Label layoutX="33.0" layoutY="61.0" prefHeight="73.0" prefWidth="394.0" text="Select the correct pronunciation of the word!">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <Button fx:id="nextButton" layoutX="468.0" layoutY="524.0" mnemonicParsing="false" onAction="#handleNextButton" style="-fx-background-color: #4284f5;" text="Next" textFill="WHITE" />
                   <Button fx:id="saveButton" layoutX="417.0" layoutY="524.0" mnemonicParsing="false" onAction="#handleSaveButton" style="-fx-background-color: #4284f5;" text="Save" textFill="WHITE" />
                   <Button fx:id="previousButton" layoutX="343.0" layoutY="524.0" mnemonicParsing="false" onAction="#handlePreviousButton" style="-fx-background-color: #4284f5;" text="Previous" textFill="WHITE" />
